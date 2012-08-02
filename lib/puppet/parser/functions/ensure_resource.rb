@@ -21,6 +21,6 @@ Puppet::Parser::Functions::newfunction(:ensure_resource, :type => :statement, :d
   if function_defined_with_params(["#{type}[#{title}]", params])
     Puppet.debug("Resource #{type}[#{title}] does not need to be created b/c it already exists")
   else
-    function_create_resources(type.capitalize, title => params)
+    function_create_resources([type.capitalize, { title => params }])
   end
 end
